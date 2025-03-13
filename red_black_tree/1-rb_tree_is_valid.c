@@ -1,4 +1,12 @@
 #include "rb_trees.h"
+#include <stdio.h>
+
+#define ZERO_HGT 0
+
+static int red_checks(const rb_tree_t *);
+static int blk_hgt(const rb_tree_t *);
+
+/* static int verify_red_adj(const rb_tree_t *tree); */
 
 /**
 * rb_tree_is_valid - verifies the red black validity of a tree
@@ -16,13 +24,75 @@
 
 int rb_tree_is_valid(const rb_tree_t *tree)
 {
-	rb_tree_props_t prop_vals;
-
 	if (!tree)
 		return (0);
+
 	/* root color check; verify prop #3 */
 	if (tree->color != BLACK)
 		return (0);
 
+	if (!red_checks(tree))
+		return (0);
+	if (blk_hgt(tree) == -1)
+		return (0);
 
+	return (1);
 }
+
+/**
+ * red_checks - performs red black tree property checks on a tree
+ * @tree: node of tree
+ *
+ * Return: 1 if valid tree, 0 otherwise
+ */
+
+static int red_checks(const rb_tree_t *tree)
+{
+	if (!tree)
+		return (1);
+	printf("node value %d\n", tree->n);
+
+	if (tree->color == RED)
+	{
+		if ((tree->parent != NULL && tree->parent->color == RED) ||
+		    (tree->left != NULL && tree->left->color == RED) ||
+		    (tree->right != NULL && tree->right->color == RED))
+			return (0);
+	}
+	/* verify prop #2 node color */
+	else if (tree->color != BLACK && tree->color != RED)
+	{
+		printf("color error\n");
+		return (0);
+	}
+
+	red_checks(tree->left);
+	red_checks(tree->right);
+
+	return (1);
+}
+
+/**
+* blk_hgt - returns the black height of tree
+* @tree: node of tree
+*
+* Return: black height, or -1 if not matching height
+*/
+
+static int blk_hgt(const rb_tree_t *tree)
+{
+	int l_hgt, r_hgt, crnt_hgt;
+
+	if (tree == NULL)
+		return (1);
+
+	l_hgt = blk_hgt(tree->left);
+	r_hgt = blk_hgt(tree->right);
+
+	if (l_hgt == -1 || r_hgt == -1)
+		return (-1);
+
+	crnt_hgt = (tree->color == BLACK) ? 1 : 0;
+	return ((l_hgt == r_hgt) ? l_hgt + crnt_hgt : -1);
+}
+
