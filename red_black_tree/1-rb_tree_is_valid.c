@@ -31,11 +31,13 @@ int rb_tree_is_valid(const rb_tree_t *tree)
 	/* root color check; verify prop #3 */
 	if (tree->color != BLACK)
 		return (0);
-
+	/* property checks for #3 and #4 */
 	if (!red_checks(tree))
 		return (0);
+	/* property check for #5 */
 	if (blk_hgt(tree) == -1)
 		return (0);
+	/*property check for #1 */
 	if (is_bst(0, tree) == 0)
 		return (0);
 
@@ -53,10 +55,10 @@ static int red_checks(const rb_tree_t *tree)
 {
 	if (!tree)
 		return (1);
-	printf("node value %d\n", tree->n);
 
 	if (tree->color == RED)
 	{
+		/* check for adj red nodes */
 		if ((tree->parent != NULL && tree->parent->color == RED) ||
 		    (tree->left != NULL && tree->left->color == RED) ||
 		    (tree->right != NULL && tree->right->color == RED))
@@ -64,10 +66,7 @@ static int red_checks(const rb_tree_t *tree)
 	}
 	/* verify prop #2 node color */
 	else if (tree->color != BLACK && tree->color != RED)
-	{
-		printf("color error\n");
 		return (0);
-	}
 
 	red_checks(tree->left);
 	red_checks(tree->right);
