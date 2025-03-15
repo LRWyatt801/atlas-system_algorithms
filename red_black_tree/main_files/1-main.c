@@ -16,8 +16,8 @@ rb_tree_t *valid_rb(void)
     root = rb_tree_node(NULL, 98, BLACK);
     root->left = rb_tree_node(root, 90, BLACK);
     root->right = rb_tree_node(root, 120, BLACK);
-    root->left->left = rb_tree_node(root->left, 79, RED);
-    root->left->right = rb_tree_node(root->left, 95, RED);
+    root->left->left = rb_tree_node(root->left, 95, RED);
+    root->left->right = rb_tree_node(root->left, 78, RED);
     return (root);
 }
 

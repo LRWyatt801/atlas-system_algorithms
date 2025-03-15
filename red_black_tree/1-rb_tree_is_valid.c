@@ -5,6 +5,7 @@
 
 static int red_checks(const rb_tree_t *);
 static int blk_hgt(const rb_tree_t *);
+static int is_bst(int, const rb_tree_t *);
 
 /* static int verify_red_adj(const rb_tree_t *tree); */
 
@@ -34,6 +35,8 @@ int rb_tree_is_valid(const rb_tree_t *tree)
 	if (!red_checks(tree))
 		return (0);
 	if (blk_hgt(tree) == -1)
+		return (0);
+	if (is_bst(0, tree) == 0)
 		return (0);
 
 	return (1);
@@ -96,3 +99,26 @@ static int blk_hgt(const rb_tree_t *tree)
 	return ((l_hgt == r_hgt) ? l_hgt + crnt_hgt : -1);
 }
 
+/**
+* is_bst - checks if a tree is a bst (ordered)
+* @tree: node of tree
+*
+* Return: 1 if true, otherwise 0
+*/
+
+static int is_bst(int prev_val, const rb_tree_t *tree)
+{
+	if (!tree)
+		return (1);
+
+
+	if (!is_bst(prev_val, tree->left))
+		return (0);
+
+	if (prev_val >= tree->n)
+		return (0);
+
+	prev_val = tree->n;
+
+	return (is_bst(prev_val, tree->right));
+}
