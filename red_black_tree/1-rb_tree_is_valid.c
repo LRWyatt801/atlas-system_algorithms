@@ -101,6 +101,7 @@ static int blk_hgt(const rb_tree_t *tree)
 
 /**
 * is_bst - checks if a tree is a bst (ordered)
+* @prev_val: previous value in tree
 * @tree: node of tree
 *
 * Return: 1 if true, otherwise 0
