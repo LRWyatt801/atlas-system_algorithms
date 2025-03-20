@@ -6,7 +6,7 @@
 #define LR 4 /* 0000 0100 */
 #define RL 8 /* 0000 1000 */
 
-static rb_tree_t *rotateLeft(rb_tree_t *);
+static rb_tree_t *rotateLeft(rb_tree_t **);
 static rb_tree_t *rotateRight(rb_tree_t *);
 static rb_tree_t *orderedInsert(rb_tree_t *, int);
 static void redRedHandler(rb_tree_t *);
@@ -44,23 +44,23 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
  *
  * Return: The new root of the rotated subtree.
  */
-static rb_tree_t *rotateLeft(rb_tree_t *tree)
+static rb_tree_t *rotateLeft(rb_tree_t **tree)
 {
 	printf("rotate Left\n");
-	rb_tree_t *x = tree->right;
+	rb_tree_t *x = (*tree)->right;
 	rb_tree_t *y = x->left;
 
-	x->left = tree;
-	tree->right = y;
+	x->left = (*tree);
+	(*tree)->right = y;
 
 	if (y)
-		y->parent = tree;
+		y->parent = *tree;
 
-	x->parent = tree->parent;
-	tree->parent = x;
+	x->parent = (*tree)->parent;
+	(*tree)->parent = x;
 
 	if (x->parent) {
-		if (x->parent->left == tree)
+		if (x->parent->left == *tree)
 			x->parent->left = x;
 		else
 			x->parent->right = x;
@@ -212,7 +212,7 @@ static rb_tree_t *rotator(rb_tree_t *tree, int rotate_case)
 			tree->right->color = RED;
 			return (tree);
 		case RR:
-			tree = rotateLeft(tree);
+			tree = rotateLeft(&tree);
 			tree->color = BLACK;
 			tree->left->color = RED;
 			rb_tree_print(tree);
@@ -220,12 +220,12 @@ static rb_tree_t *rotator(rb_tree_t *tree, int rotate_case)
 		case RL:
 			tree->right = rotateRight(tree->right);
 			tree->right->parent = tree;
-			tree = rotateLeft(tree);
+			tree = rotateLeft(&tree);
 			tree->color = BLACK;
 			tree->left->color = RED;
 			return (tree);
 		case LR:
-			tree->left = rotateLeft(tree->left);
+			tree->left = rotateLeft(&tree->left);
 			tree->left->parent = tree;
 			tree = rotateRight(tree);
 			tree->color = BLACK;
