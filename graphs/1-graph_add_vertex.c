@@ -44,7 +44,11 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 		while (tmp->next != NULL)
 		{
 			if (strcmp(tmp->content, str) == 0)
+			{
+				free(new_vertex->content);
+				free(new_vertex);
 				return (NULL);
+			}
 			tmp = tmp->next;
 			i++;
 		}
