@@ -19,7 +19,7 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 	vertex_t *new_vertex, *tmp;
 	size_t i = 0;
 
-	if (!str)
+	if (!graph || !str)
 		return (NULL);
 	new_vertex = malloc(sizeof(vertex_t));
 	if (!new_vertex)
