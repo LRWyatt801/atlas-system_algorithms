@@ -47,6 +47,7 @@ vertex_t *graph_add_vertex(graph_t *graph, const char *str)
 			{
 				free(new_vertex->content);
 				free(new_vertex);
+				printf("Failed to add [%s]\n", str);
 				return (NULL);
 			}
 			tmp = tmp->next;
