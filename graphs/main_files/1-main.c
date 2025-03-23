@@ -18,12 +18,13 @@ int main(void)
         fprintf(stderr, "Failed to create graph\n");
         return (EXIT_FAILURE);
     }
+	printf("graph created\n");
 
     if (!graph_add_vertex(graph, "San Francisco"))
     {
         fprintf(stderr, "Failed to add vertex\n");
         return (EXIT_FAILURE);
-    }
+    };
 
     graph_display(graph);
 
