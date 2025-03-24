@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* TODO fix */
 
 int unidirectional_edge(vertex_t *, vertex_t*);
 int bidirectional_edge(vertex_t *, vertex_t*);
