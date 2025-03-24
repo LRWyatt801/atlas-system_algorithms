@@ -31,21 +31,21 @@ int graph_add_edge(graph_t *graph,
 	vertex_t *tmp_src = NULL, *tmp_dest = NULL, *tmp_vertex = NULL;
 
 	/* check for NULL inputs */
-	if (!graph || !str || !dest)
+	if (!graph || !graph->vertices || !str || !dest)
 		return (0);
 	/* check for invalid inputs */
-	if (graph->nb_vertices < 2 ||
+/* 	if (graph->nb_vertices < 2 ||
 		(type != UNIDIRECTIONAL && type != BIDIRECTIONAL) ||
 		strcmp(str, dest) == 0)
 		return (0);
-
+ */
 	/* get vertex pointers */
 	tmp_vertex = graph->vertices;
-	while (tmp_vertex->next != NULL)
+	while (tmp_vertex != NULL)
 	{
 		if (strcmp(tmp_vertex->content, str) == 0)
 			tmp_src = tmp_vertex;
-		else if (strcmp(tmp_vertex->content, dest) == 0)
+		if (strcmp(tmp_vertex->content, dest) == 0)
 			tmp_dest = tmp_vertex;
 		tmp_vertex = tmp_vertex->next;
 	}
@@ -53,14 +53,11 @@ int graph_add_edge(graph_t *graph,
 		return (0);
 
 	/* set edge */
-	if (type == UNIDIRECTIONAL)
+	if (unidirectional_edge(tmp_src, tmp_dest) == 0)
+		return (0);
+	if (type == BIDIRECTIONAL)
 	{
-		if (unidirectional_edge(tmp_src, tmp_dest) == 0)
-			return (0);
-	}
-	else
-	{
-		if (bidirectional_edge(tmp_src, tmp_dest) == 0)
+		if (unidirectional_edge(tmp_dest, tmp_src) == 0)
 			return (0);
 	}
 	return (1);
@@ -92,7 +89,14 @@ int unidirectional_edge(vertex_t *src, vertex_t *dest)
 	{
 		tmp_edge = src->edges;
 		while (tmp_edge->next != NULL)
+		{
+			if (tmp_edge->dest == dest)
+			{
+				free(new_edge);
+				return (0);
+			}
 			tmp_edge = tmp_edge->next;
+		}
 		tmp_edge->next = new_edge;
 	}
 	src->nb_edges++;
