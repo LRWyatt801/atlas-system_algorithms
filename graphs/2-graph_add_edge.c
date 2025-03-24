@@ -75,7 +75,6 @@ int unidirectional_edge(vertex_t *src, vertex_t *dest)
 {
 	edge_t *new_edge, *tmp_edge;
 
-	printf("making edge: %s to %s\n", src->content, dest->content);
 	if (!src || !dest)
 		return (0);
 
@@ -117,6 +116,5 @@ int bidirectional_edge(vertex_t *src, vertex_t *dest)
 		/* TODO free src to dest edge */
 		return (0);
 	}
-	printf("bidirectional created\n");
 	return (1);
 }
