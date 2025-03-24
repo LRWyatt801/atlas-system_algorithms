@@ -9,13 +9,15 @@ int unidirectional_edge(vertex_t *, vertex_t*);
 int bidirectional_edge(vertex_t *, vertex_t*);
 
 /**
- * graph_add_edge - adds an edge between two vertices(nodes) of an existing graph
+ * graph_add_edge - adds an edge between two vertices(nodes)
+ *					of an existing graph
  * @graph: pointer to the graph to add the edge to
- * @src: string identifying the vertex to make the connection from
+ * @str: string identifying the vertex to make the connection from
  * @dest: srting identifying the vertex to connect to
  * @type: is the type of edge
  *	UNIDIRECTIONAL - only one edge is created connecting src to dest
- *	BIDIRECTIONAL - two edges are created, connecting src to dest AND dest to src
+ *	BIDIRECTIONAL - two edges are created, connecting src to dest
+ *					AND dest to src
  *
  * Return: 1 on success, or 0 on failure
  */
