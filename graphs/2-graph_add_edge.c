@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* TODO fix */
-
 int unidirectional_edge(vertex_t *, vertex_t*);
 int bidirectional_edge(vertex_t *, vertex_t*);
 
@@ -33,12 +31,7 @@ int graph_add_edge(graph_t *graph,
 	/* check for NULL inputs */
 	if (!graph || !graph->vertices || !str || !dest)
 		return (0);
-	/* check for invalid inputs */
-/* 	if (graph->nb_vertices < 2 ||
-		(type != UNIDIRECTIONAL && type != BIDIRECTIONAL) ||
-		strcmp(str, dest) == 0)
-		return (0);
- */
+
 	/* get vertex pointers */
 	tmp_vertex = graph->vertices;
 	while (tmp_vertex != NULL)
@@ -100,28 +93,5 @@ int unidirectional_edge(vertex_t *src, vertex_t *dest)
 		tmp_edge->next = new_edge;
 	}
 	src->nb_edges++;
-	return (1);
-}
-
-/**
- * bidirectional_edge - creates edges between src to dest AND dest to src
- * @src: pointer to src vertex
- * @dest: pointer to dest vertex
- *
- * Return: 1 on success, 0 on failure
- */
-
-int bidirectional_edge(vertex_t *src, vertex_t *dest)
-{
-	if (!src || !dest)
-		return (0);
-	/* src to dest */
-	if (unidirectional_edge(src, dest) == 0)
-		return (0);
-	if (unidirectional_edge(dest, src) == 0)
-	{
-		/* TODO free src to dest edge */
-		return (0);
-	}
 	return (1);
 }
