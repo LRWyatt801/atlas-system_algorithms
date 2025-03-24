@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "graphs.h"
+#include "../graphs.h"
 
 /**
  * main - Entry point
