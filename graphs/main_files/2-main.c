@@ -54,6 +54,9 @@ int main(void)
 
 /* OUTPUT
 
+Currently output does not match.  There is an error in main.
+2-graph_add_edge.c passed all checks except one
+
 Number of vertices: 8
 [0] San Francisco ->6->3->7
 [1] Seattle ->4->3
