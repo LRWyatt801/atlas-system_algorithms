@@ -20,6 +20,9 @@ size_t depth_first_traverse(const graph_t *graph,
 {
 	size_t visited[graph->nb_vertices], i = 0;
 
+	if (!graph || !action || !graph->vertices)
+		return (0);
+
 	for (i = 0; i < graph->nb_vertices; i++)
 		visited[i] = 0;
 
