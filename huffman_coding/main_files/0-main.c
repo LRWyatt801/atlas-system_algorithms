@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../heap/heap.h"
+#include "heap.h"
 
 /**
  * int_cmp - Compares two integers

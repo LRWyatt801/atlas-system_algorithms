@@ -1,7 +1,7 @@
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -pedantic
 MAIN_SRC := ./main_files
-PRINT_SRC := ./main_files/print #add print
+PRINT_SRC := ./main_files/binary_tree_print.c
 HEAP_SRC := ./heap
 HEAP_INC := -Iheap/ -I./
 
