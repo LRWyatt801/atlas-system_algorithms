@@ -11,5 +11,8 @@ heap_create: $(HEAP_SRC)/heap_create.c $(MAIN_SRC)/0-main.c
 binary_tree_node: $(HEAP_SRC)/*.c $(MAIN_SRC)/1-main.c
 	$(CC) $(CFLAGS) $(HEAP_INC) $^ -o $@
 
+heap_insert: $(HEAP_SRC)/*.c $(MAIN_SRC)/2-main.c
+	$(CC) $(CFLAGS) $(HEAP_INC) $^ -o $@
+
 clean:
 	rm -f heap_create binary_tree_node
