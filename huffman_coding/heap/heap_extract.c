@@ -25,6 +25,8 @@ void *heap_extract(heap_t *heap)
 	{
 		extracted_data = heap->root->data;
 		free(heap->root);
+		heap->root = NULL;
+		heap->size = 0;
 		return (extracted_data);
 	}
 
