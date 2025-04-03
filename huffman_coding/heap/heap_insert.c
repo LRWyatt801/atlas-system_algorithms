@@ -4,6 +4,7 @@ binary_tree_node_t *breadth_search(heap_t *, int);
 int is_empty(int);
 void enqueue(binary_tree_node_t *[], int *, int *, binary_tree_node_t *);
 binary_tree_node_t *dequeue(binary_tree_node_t *[], int *, int *);
+void heapify(heap_t *, binary_tree_node_t *);
 
 /**
  * heap_insert - inserts a value in a Min Binary Heap
@@ -30,9 +31,15 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	tmp_node = breadth_search(heap, NXT_OPEN_Q_NODE);
 	new_node->parent = tmp_node;
 	if (!tmp_node->left)
+	{
 		tmp_node->left = new_node;
+		heapify(heap, tmp_node->left);
+	}
 	else
+	{
 		tmp_node->right = new_node;
+		heapify(heap, tmp_node->right);
+	}
 	heap->size += 1;
 	return (new_node);
 }
@@ -129,4 +136,27 @@ binary_tree_node_t *dequeue(binary_tree_node_t *queue[], int *qfront, int *qrear
 		*qfront = *qrear = -1;
 
 	return (tmp_node);
+}
+
+/**
+ * heapify - rearrangnes heap to a min heap
+ * @heap: heap to rearrange
+ *
+ * Return: n/a
+ */
+
+void heapify(heap_t *heap, binary_tree_node_t *node)
+{
+	if (!heap || !node->parent)
+		return;
+	
+	void *tmp_data;
+	
+	while (node->parent && heap->data_cmp(node->parent->data, node->data) > 0)
+	{
+		tmp_data = node->data;
+		node->data = node->parent->data;
+		node->parent->data = tmp_data;
+		node = node->parent;
+	}
 }
