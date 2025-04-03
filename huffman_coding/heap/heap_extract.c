@@ -25,7 +25,7 @@ void *heap_extract(heap_t *heap)
 
 	root_node = heap->root;
 	last_node = breadth_search(heap, LAST_NODE_INSERTED);
-	
+
 	extracted_data = root_node->data;
 	root_node->data = last_node->data;
 	if (last_node->parent->left == last_node)
@@ -41,8 +41,9 @@ void *heap_extract(heap_t *heap)
 }
 
 /**
- * heapify - update heap to be min heap
- * @heap: heap to heapify
+ * rec_heapify - update heap to be min heap
+ * @node: heap to heapify
+ * @data_cmp: function pointer that compares data in two pointers
  *
  * Return: n/a
  */
