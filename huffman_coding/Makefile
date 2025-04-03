@@ -12,7 +12,7 @@ binary_tree_node: $(HEAP_SRC)/*.c $(MAIN_SRC)/1-main.c
 	$(CC) $(CFLAGS) $(HEAP_INC) $^ -o $@
 
 heap_insert: $(HEAP_SRC)/*.c $(MAIN_SRC)/2-main.c
-	$(CC) $(CFLAGS) $(HEAP_INC) $^ -o $@
+	$(CC) $(CFLAGS) $(HEAP_INC) $(PRINT_SRC) $^ -o $@
 
 clean:
-	rm -f heap_create binary_tree_node
+	rm -f heap_create binary_tree_node heap_insert
