@@ -21,6 +21,13 @@ void *heap_extract(heap_t *heap)
 	if (!heap || !heap->root)
 		return (NULL);
 
+	if (heap->size == 1)
+	{
+		extracted_data = heap->root->data;
+		free(heap->root);
+		return (extracted_data);
+	}
+
 	binary_tree_node_t *last_node = NULL, *root_node = NULL;
 
 	root_node = heap->root;
