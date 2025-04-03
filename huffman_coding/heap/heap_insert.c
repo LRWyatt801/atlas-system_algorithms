@@ -45,7 +45,7 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 }
 
 /**
- * fetchEndOfHeap - fetchs the last node in a binary tree heap
+ * breadth_search - fetchs the last node in a binary tree heap
  * @heap: heap_t pointer containing heap root and size
  * @last_node: 1 = search for last node inserted, 0 = next open position
  *
@@ -56,7 +56,7 @@ binary_tree_node_t *breadth_search(heap_t *heap, int last_node)
 {
 	if (heap == NULL || heap->root == NULL)
 		return (NULL);
-	
+
 	binary_tree_node_t *queue[heap->size], *crnt_node;
 	int qfront = -1, qrear = -1;
 	size_t i;
@@ -109,7 +109,8 @@ int is_empty(int qrear)
  * Return: n/a
  */
 
-void enqueue(binary_tree_node_t *queue[], int *qfront, int *qrear, binary_tree_node_t *node)
+void enqueue(binary_tree_node_t *queue[], int *qfront,
+			 int *qrear, binary_tree_node_t *node)
 {
 	if (*qfront == -1)
 		*qfront = 0;
@@ -126,7 +127,8 @@ void enqueue(binary_tree_node_t *queue[], int *qfront, int *qrear, binary_tree_n
  * Return: pointer to the queued node
  */
 
-binary_tree_node_t *dequeue(binary_tree_node_t *queue[], int *qfront, int *qrear)
+binary_tree_node_t *dequeue(binary_tree_node_t *queue[],
+							int *qfront, int *qrear)
 {
 	binary_tree_node_t *tmp_node = NULL;
 
@@ -141,6 +143,7 @@ binary_tree_node_t *dequeue(binary_tree_node_t *queue[], int *qfront, int *qrear
 /**
  * heapify - rearrangnes heap to a min heap
  * @heap: heap to rearrange
+ * @node: node to check and heapify
  *
  * Return: n/a
  */
@@ -149,9 +152,9 @@ void heapify(heap_t *heap, binary_tree_node_t *node)
 {
 	if (!heap || !node->parent)
 		return;
-	
+
 	void *tmp_data;
-	
+
 	while (node->parent && heap->data_cmp(node->parent->data, node->data) > 0)
 	{
 		tmp_data = node->data;
