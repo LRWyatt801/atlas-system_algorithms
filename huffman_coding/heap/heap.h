@@ -49,4 +49,6 @@ void heap_delete(heap_t *heap, void (*free_data)(void *));
 
 /*****************************************************************************/
 
+binary_tree_node_t *breadth_search(heap_t *, int);
+
 #endif /* HEAP_H */
