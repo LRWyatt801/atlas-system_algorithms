@@ -23,5 +23,8 @@ heap_delete: $(HEAP_SRC) $(MAIN_SRC)/4-main.c
 symbol_create: $(HEAP_SRC) symbol.c $(MAIN_SRC)/5-main.c
 	$(CC) $(CFLAGS) $(HEAP_INC) $(PRINT_SRC) $^ -o $@
 
+priority_heap: symbol.c huffman_priority_queue.c $(HEAP_SRC) $(MAIN_SRC)/6-main.c
+	$(CC) $(CFLAGS) $(HEAP_INC) $(PRINT_SRC) $^ -o $@
+
 clean:
-	rm -f heap_create binary_tree_node heap_insert heap_extract heap_delete symbol_create
+	rm -f heap_create binary_tree_node heap_insert heap_extract heap_delete symbol_create priority_heap
