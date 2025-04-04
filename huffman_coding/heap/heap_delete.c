@@ -14,10 +14,11 @@ void rec_delete(binary_tree_node_t *, void (*)(void *));
 
 void heap_delete(heap_t *heap, void (*free_data)(void *))
 {
-	if (!heap || !heap->root)
+	if (!heap)
 		return;
 
-	rec_delete(heap->root, free_data);
+	if (heap->root)
+		rec_delete(heap->root, free_data);
 	free(heap);
 }
 
