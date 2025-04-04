@@ -26,7 +26,7 @@ int huffman_extract_and_insert(heap_t *priority_queue)
 	right_node = (binary_tree_node_t *)heap_extract(priority_queue);
 
 	/* create sum_node */
-	sum_sym = symbol_create(-1,
+	sum_sym = symbol_create((char)-1,
 			 ((symbol_t *)left_node->data)->freq +
 			 ((symbol_t *)right_node->data)->freq);
 	sum_node = binary_tree_node(NULL, sum_sym);
@@ -38,6 +38,8 @@ int huffman_extract_and_insert(heap_t *priority_queue)
 
 	sum_node->left = left_node;
 	sum_node->right = right_node;
+	left_node->parent = sum_node;
+	right_node->parent = sum_node;
 
 	heap_insert(priority_queue, sum_node);
 	return (1);
