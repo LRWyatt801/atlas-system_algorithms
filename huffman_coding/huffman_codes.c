@@ -1,8 +1,11 @@
 #include "heap/heap.h"
 #include "huffman.h"
 
+#include <stdlib.h>
+
 void rec_print_huff(binary_tree_node_t *, size_t);
 void print_binary(size_t);
+void free_huff(binary_tree_node_t *);
 
 /**
 * huffman_codes - prints the resulting huffman codes for each symbol
@@ -21,6 +24,7 @@ int huffman_codes(char *data, size_t *freq, size_t size)
 	root = huffman_tree(data, freq, size);
 
 	rec_print_huff(root, huff_code);
+	free_huff(root);
 	return (1);
 }
 
@@ -81,4 +85,22 @@ void print_binary(size_t code)
 	}
 	if (ones == 0)
 		putchar ('0');
+}
+
+/**
+* free_huff - frees the nodes of a huffman tree
+* @node: pointer to a node of the huffman tree
+*
+* Return: n/a
+*/
+
+void free_huff(binary_tree_node_t *node)
+{
+	if (!node)
+		return;
+
+	free_huff(node->left);
+	free_huff(node->right);
+	free(node->data);
+	free(node);
 }
