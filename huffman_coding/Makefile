@@ -32,6 +32,8 @@ extract: symbol.c huffman_priority_queue.c huffman_extract_and_insert.c $(HEAP_S
 huffman_tree: symbol.c huffman_priority_queue.c huffman_extract_and_insert.c huffman_tree.c $(HEAP_SRC) $(MAIN_SRC)/8-main.c
 	$(CC) $(CFLAGS) $(HEAP_INC) $(PRINT_SRC) $^ -o $@
 
+huffman_codes: symbol.c huffman_priority_queue.c huffman_extract_and_insert.c huffman_tree.c huffman_codes.c $(HEAP_SRC) $(MAIN_SRC)/9-main.c
+	$(CC) $(CFLAGS) $(HEAP_INC) $(PRINT_SRC) $^ -o $@
 
 clean:
-	rm -f heap_create binary_tree_node heap_insert heap_extract heap_delete symbol_create priority_heap extract huffman_tree
+	rm -f heap_create binary_tree_node heap_insert heap_extract heap_delete symbol_create priority_heap extract huffman_tree huffman_codes
