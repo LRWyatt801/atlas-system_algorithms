@@ -28,7 +28,6 @@ int huffman_codes(char *data, size_t *freq, size_t size)
 * rec_print_huff - recursivly print the huffman codes
 * @node: node to print
 * @code: current code
-* @i: interator for code
 *
 * Return: n/a
 */
@@ -36,6 +35,7 @@ int huffman_codes(char *data, size_t *freq, size_t size)
 void rec_print_huff(binary_tree_node_t *node, size_t code)
 {
 	symbol_t *sym = NULL;
+
 	if (!node)
 		return;
 
