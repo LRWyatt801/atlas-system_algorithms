@@ -15,5 +15,10 @@
 queue_t *backtracking_array(char **map, int rows, int cols,
 			    point_t const *start, point_t const *target)
 {
+	(void)map;
+	(void)rows;
+	(void)cols;
+	(void)start;
+	(void)target;
 	return (NULL);
 }
