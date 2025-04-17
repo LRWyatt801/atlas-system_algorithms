@@ -32,19 +32,20 @@ queue_t *backtracking_array(char **map, int rows, int cols,
 		return (NULL);
 
 	queue_t *queue = queue_create();
-	int **visited = NULL, i, j;
+	int **visited = malloc(rows * sizeof(int *));
+	int i;
 
 	/* set all visited nodes to 0 */
 	for (i = 0; i < rows; i++)
-	{
-		for (j = 0; j < cols; j++)
-			visited[i][j] = 0;
-	}
+		visited[i] = calloc(cols, sizeof(int));
 
 	/* Recursively navigate map */
 	if (!backtracking_rec(queue, visited, map, rows, cols, start->x,
 			      start->y, target))
 	{
+		for (i = 0; i < rows; i++)
+			free(visited[i]);
+		free(visited);
 		free(queue);
 		return (NULL);
 	}
