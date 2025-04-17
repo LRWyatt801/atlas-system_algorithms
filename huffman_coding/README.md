@@ -1,6 +1,18 @@
 # Huffman Coding
 
-In this directory I will be learning about Huffman coding and binary heaps.  Within the folder heap I will be implementing a binary heap and learning about what they are.
+Huffman coding is an algorithm used in loseless compression.  It consists of finding the frequency of characters in a file, building a binary heap, and finally building a huffman tree.  Which is then used to asign characters a smaller bit combination based on position in the huffman tree.
+
+The tasks I was required to do were:
+- Create a Min Binary Heap
+- Create Node in Min Binary Heap
+- Insert Node in Min Binary Heap
+- Extract Node from Min Binary Heap
+- Delete Min Binary Heap
+- Create a Symbol - stuct to hold frequency and character
+- Build a Priority Queue
+- Extract from Priority Queue
+- Build the Huffman Tree
+- Assign the Huffman Codes
 
 ## Learning Objectives
 
