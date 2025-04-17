@@ -4,12 +4,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define RIGHT(x) (x + 1)
-#define BOTTOM(y) (y + 1)
-#define LEFT(x) (x - 1)
-#define TOP(y) (x - 1)
+#define INDEX_2D(x, y, width) ((y) * (width) + (x))
+#define RIGHT(x) ((x) + 1)
+#define BOTTOM(y) ((y) + 1)
+#define LEFT(x) ((x) - 1)
+#define TOP(y) ((x) - 1)
 
-static int backtracking_rec(queue_t *queue, int **visited, char **map,
+static int backtracking_rec(queue_t *queue, int visited[], char **map,
 			    int rows, int cols, int x, int y,
 			    point_t const *target);
 
@@ -32,20 +33,17 @@ queue_t *backtracking_array(char **map, int rows, int cols,
 		return (NULL);
 
 	queue_t *queue = queue_create();
-	int **visited = malloc(rows * sizeof(int *));
+	int visited[rows * cols];
 	int i;
 
 	/* set all visited nodes to 0 */
-	for (i = 0; i < rows; i++)
-		visited[i] = calloc(cols, sizeof(int));
+	for (i = 0; i < rows * cols; i++)
+		visited[i] = 0;
 
 	/* Recursively navigate map */
 	if (!backtracking_rec(queue, visited, map, rows, cols, start->x,
 			      start->y, target))
 	{
-		for (i = 0; i < rows; i++)
-			free(visited[i]);
-		free(visited);
 		free(queue);
 		return (NULL);
 	}
@@ -60,21 +58,22 @@ queue_t *backtracking_array(char **map, int rows, int cols,
 * @map: pointer to a read only 2d array
 * @rows: number of rows
 * @cols: number of columns
-* @start: coordinates of starting point
+* @x: x position
+* @y: y position
 * @target: coordinates of target point
 *
 * Return: 1 if valid node, otherwise 0
 */
 
-static int backtracking_rec(queue_t *queue, int **visited, char **map,
+static int backtracking_rec(queue_t *queue, int visited[], char **map,
 			    int rows, int cols, int x, int y,
 			    point_t const *target)
 {
 	if (x < 0 || x >= cols ||
 	    y < 0 || y >= rows ||
-	    map[y][x] == '1' || visited[y][x])
+	    map[y][x] == '1' || visited[INDEX_2D(x, y, cols)])
 		return (0);
-	visited[y][x] = 1;
+	visited[INDEX_2D(x, y, cols)] = 1;
 	printf("Checking coordinates [%d, %d]\n", x, y);
 	if ((x == target->x && y == target->y) ||
 	    backtracking_rec(queue, visited, map, rows, cols, RIGHT(x), y, target) ||
