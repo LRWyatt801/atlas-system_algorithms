@@ -50,6 +50,7 @@ queue_t *backtracking_graph(graph_t *graph, vertex_t const *start,
 *	    for a path from start to target
 * @queue: queue containing the current path
 * @visited: array containing true/false for if node is visited
+* @graph: graph to search through
 * @start: node to search from
 * @target: target node searching for
 *
