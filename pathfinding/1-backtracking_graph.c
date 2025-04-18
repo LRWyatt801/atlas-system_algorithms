@@ -68,7 +68,10 @@ int dfs_btg(queue_t *queue, int visited[], graph_t *graph,
 	visited[INDEX(start)] = 1;
 	printf("Checking %s\n", start->content);
 	if (start->content == target->content)
+	{
+		queue_push_front(queue, strdup(start->content));
 		return (1);
+	}
 	crnt_edge = start->edges;
 	while (crnt_edge != NULL)
 	{
