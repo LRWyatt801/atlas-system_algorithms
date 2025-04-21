@@ -40,7 +40,7 @@ nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str)
 		new_node->next = parent->children;
 	parent->children = new_node;
 	parent->nb_children += 1;
-	return (NULL);
+	return (new_node);
 
 strdup_err:
 	free(new_node);
