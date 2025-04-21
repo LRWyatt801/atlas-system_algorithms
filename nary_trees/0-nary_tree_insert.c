@@ -20,24 +20,20 @@ nary_tree_t *nary_tree_insert(nary_tree_t *parent, char const *str)
 	if (!new_node)
 		return (NULL);
 
+	new_node->content = strdup(str);
+	if (!str)
+		goto strdup_err;
+
 	new_node->nb_children = 0;
 	new_node->children = NULL;
 	new_node->next = NULL;
-	if (!parent) /* insert when parent is NULL */
-	{
-		new_node->parent = NULL;
-		new_node->content = strdup(str);
-		if (!new_node->content)
-			goto strdup_err;
+	new_node->parent = NULL;
+	/* insert for root */
+	if (!parent)
 		return (new_node);
-	}
 	/* insert child node for parent */
 	new_node->parent = parent;
-	new_node->content = strdup(str);
-	if (!new_node->content)
-		goto strdup_err;
-	if (parent->nb_children > 1)
-		new_node->next = parent->children;
+	new_node->next = parent->children;
 	parent->children = new_node;
 	parent->nb_children += 1;
 	return (new_node);
