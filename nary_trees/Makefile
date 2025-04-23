@@ -11,5 +11,9 @@ MAIN_SRC := ./main_files/
 2-nary_tree_traverse: $(MAIN_SRC)2-main.c 0-nary_tree_insert.c 1-nary_tree_delete.c 2-nary_tree_traverse.c
 	$(CC) $(CFLAGS) -o $@ $^
 
+3-nary_tree_diameter: $(MAIN_SRC)3-main.c 0-nary_tree_insert.c 1-nary_tree_delete.c 3-nary_tree_diameter.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+
 clean:
-	rm -rf 0-nary_tree_insert 1-nary_tree_delete 2-nary_tree_traverse
+	rm -rf 0-nary_tree_insert 1-nary_tree_delete 2-nary_tree_traverse 3-nary_tree_diameter
