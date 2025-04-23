@@ -14,6 +14,8 @@ MAIN_SRC := ./main_files/
 3-nary_tree_diameter: $(MAIN_SRC)3-main.c 0-nary_tree_insert.c 1-nary_tree_delete.c 3-nary_tree_diameter.c
 	$(CC) $(CFLAGS) -o $@ $^
 
+4-path_exists: $(MAIN_SRC)4-main.c 0-nary_tree_insert.c 1-nary_tree_delete.c 4-path_exists.c
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -rf 0-nary_tree_insert 1-nary_tree_delete 2-nary_tree_traverse 3-nary_tree_diameter
+	rm -rf 0-nary_tree_insert 1-nary_tree_delete 2-nary_tree_traverse 3-nary_tree_diameter 4-path_exists
