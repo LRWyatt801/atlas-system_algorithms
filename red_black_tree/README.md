@@ -3,9 +3,9 @@
 ## Overview
 This project is a learning exercise to understand and implement Red-Black Trees, a type of self-balancing binary search tree. The primary focus is on implementing the following core functions:
 
-- `rb_tree_node`: Creates a new node for the Red-Black Tree.
-- `is_rb_tree_is_valid`: Checks if a given node satisfies the black property of the Red-Black Tree.
-- `rb_tree_insert`: Inserts a new value into the tree while maintaining Red-Black Tree properties.
+- `rb_tree_node` - Creates a new node for the Red-Black Tree.
+- `rb_tree_valid` - Checks if a given node satisfies the black property of the Red-Black Tree.
+- `rb_tree_insert` - Inserts a new value into the tree while maintaining Red-Black Tree properties.
 
 ## Features
 - Efficient insertion with automatic balancing.
@@ -28,4 +28,3 @@ A Red-Black Tree maintains the following properties:
 - Implement delete operation.
 - Improve visualization of the tree structure.
 - Extend with additional balancing checks.
-
