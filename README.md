@@ -10,7 +10,7 @@ This repository demonstrates my understanding and implementation of advanced pro
 - [pathfinding/](./pathfinding)
 - [red_black_tree/](./red_black_tree)
 
-Each directory will have a more in depth README due to each one being its own project.
+Each project includes a dedicated README with detailed explanations, design decisions, and usage instructions.
 
 ## About the Developer
 
