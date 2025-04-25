@@ -12,6 +12,30 @@ This repository demonstrates my understanding and implementation of advanced pro
 
 Each project includes a dedicated README with detailed explanations, design decisions, and usage instructions.
 
+# Usage
+
+Clone the repository:
+
+    git clone https://github.com/LRWyatt801/atlas-system_algorithms.git
+
+Navigate into the repository, then into the desired project directory:
+
+    cd atlas-system_algorithms/<project_name>
+
+Compile a specific task using ```make```:
+
+    make <task_name>
+
+Run task:
+
+    ./<task_name>
+
+To remove compiled executables:
+
+    make clean
+
+> Each project directory includes its own `Makefile` and `README` with task details, dependencies, and usage examples.
+
 ## About the Developer
 
 [![LinkedIn - Logan Wyatt](https://img.shields.io/badge/LinkedIn_--_Logan_Wyatt-0072b1?link=https%3A%2F%2Fwww.linkedin.com%2Fin%2Flogan-wyatt%2F)
