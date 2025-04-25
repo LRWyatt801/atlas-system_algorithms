@@ -17,4 +17,5 @@ dijkstra_graph: $(MAIN_SRC)2-main.c 2-dijkstra_graph.c
 dijkstra_graph_1: $(MAIN_SRC)2-main_1.c 2-dijkstra_graph.c
 	$(CC) $(CFLAGS) -o $@ $^ $(INCL) $(QUEUES) $(GRAPHS)
 
-
+clean:
+	rm -rf backtracking_array backtracking_graph dijkstra_graph dijkstra_graph_1
