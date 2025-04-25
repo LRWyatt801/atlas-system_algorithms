@@ -3,12 +3,12 @@
 A graph is a data structure containing a finite set of nodes in which they can have connections/edges to other nodes.  Creating a web like network between every node.  They are used to represent and analyze relationships between objects or entities.
 
 For this project the required tasks I was to implement were:
-- Create Graph
-- Add a Vertex
-- Add an Edge
-- Delete a Graph
-- Depth-first Traversal
-- Breadth-first Traversal
+- ```graph_create``` - creates a graph data structure in memory
+- ```graph_add_vertex``` - adds a vertex or node to a graph
+- ```graph_add_edge``` - adds an edge to a vertex/node in a graph
+- ```graph_delete``` - deallocates and entire graph
+- ```depth_first_traverse``` - traversal of a graph using the depth-first algorithm
+- ```breadth_first_traverse``` - traversal of a graph using the breadth-first algorithm
 
 <br>By completeing these tasks I gained a solid understanding of what a graph is and the neccessary algorithms to do so.
 
@@ -26,4 +26,4 @@ For this project the required tasks I was to implement were:
 
 ## Main files
 
-Files within main_files are provided examples of how my code will be utilized and the expected output when ran
+Files within ```/main_files``` are provided examples of how my code will be utilized and the expected output when ran
